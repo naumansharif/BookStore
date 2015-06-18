@@ -1,0 +1,112 @@
+﻿@model website.Models.Book
+
+@{
+    ViewBag.Title = "advance";
+}
+
+<div id="onlineBookStore_container">
+    <div id="onlineBookStore_menu">
+        <ul>
+            <li><a href="~/Home/home">Home</a></li>
+            <li><a href="~/Home/index3">About us</a></li>
+            <li><a href="~/Client/books">Books</a></li>
+            <li><a href="~/Admin/login">Login</a></li>
+            <li><a href="~/Admin/Menu">Menu</a></li>
+            <li><a href="~/Admin/signout">Sign out</a></li>
+            <li><a href="~/Home/advance">Advanced Search </a></li>
+
+        </ul>
+        <form class="navbar-form" method="post" action="/Client/search">
+            <select name="type" size="1">
+
+                <option value="Publisher">Publisher</option>
+
+                <option value="Name" selected>Title /Book Name</option>
+
+                <option value="Author">Author /Writer</option>
+
+                <option value="Price">Price</option>
+
+                <option value="Catagory">Catagory</option>
+
+            </select>
+            <input type="search" value="" name="search" />
+            <input type="submit" value="search" />
+        </form>
+    </div> <!-- end of menu -->
+    @Html.Partial("/Views/Shared/_title.cshtml")
+
+
+    <div id="onlineBookStore_content">
+
+        @Html.Partial("/Views/Shared/_centerLayout.cshtml")
+
+
+
+
+        <div id="onlineBookStore_content_right">
+
+            <div class="onlineBookStore_add_book">
+                <h1>Advance Search for a Book </h1>
+                <form method="post" action="/Client/advance_s" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+
+
+                    <label style="width:auto; font:bolder">Catagory&nbsp;&nbsp;&nbsp;</label>
+
+                    <select name="Catagory" style="width:auto">
+                        @*<option value="">-Select-</option>*@
+                        @foreach (var row in ViewBag.Catagory)
+                        {
+                            <option value="@row.Name">@row.Name</option>
+                        }
+                    </select><br /><br />
+                    <label>Title/Name</label>
+
+                    <select name="Title">
+                        @*<option value="">-Select-</option>*@
+                        @foreach (var row in ViewBag.Titles)
+                        {
+                            <option value="@row">@row</option>
+                        }
+                    </select><br /><br />
+                    <label>Author&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+                    <select name="Author">
+                        @foreach (var row in ViewBag.Authors)
+                        {
+                            <option value="@row.Name">@row.Name</option>
+                        }
+                    </select><br /><br />
+                    <label>Publisher&nbsp;&nbsp;&nbsp;</label>
+
+                    <select name="Publisher">
+                        @foreach (var row in ViewBag.Publisher)
+                        {
+                            <option value="@row.Name">@row.Name</option>
+                        }
+                    </select><br />
+                    <br />
+
+
+
+                    <br /> <br /> <br />
+                    <p class="submit"><input type="submit" name="commit" value="Search Book" /></p>
+                    </>
+                </form>
+
+
+            </div>
+        </div> <!-- end of content right -->
+
+        <div class="cleaner_with_height">&nbsp;</div>
+    </div> <!-- end of content -->
+    @Html.Partial("/Views/Shared/_footer.cshtml")
+
+
+
+
+</div> <!-- end of container -->
+

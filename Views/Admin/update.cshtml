@@ -1,0 +1,137 @@
+﻿@*@model website.Models.Book*@
+@using website.Models
+@{
+    ViewBag.Title = "update";
+}
+
+
+    <div id="onlineBookStore_container">
+        <div id="onlineBookStore_menu">
+            <ul>
+                <li><a href="~/Home/home">Home</a></li>
+                <li><a href="~/Home/index3">About us</a></li>
+                <li><a href="~/Client/books">Books</a></li>
+                <li><a href="~/Admin/login">Login</a></li>
+                <li><a href="~/Admin/Menu">Menu</a></li>
+                <li><a href="~/Admin/signout">Sign out</a></li>
+                <li><a href="~/Admin/advance">Advanced Search </a></li>
+
+            </ul>
+            <form class="navbar-form" method="post" action="/Client/search">
+                <select name=" type" size="1">
+
+                    <option value="Publisher">Publisher</option>
+
+                    <option value="Name" selected>Title /Book Name</option>
+
+                    <option value="Author">Author /Writer</option>
+
+                    <option value="Price">Price</option>
+
+                    <option value="Catagory">Catagory</option>
+
+                </select>
+                <input type="search" value="" name="search" />
+                <input type="submit" value="search" />
+            </form>
+        </div> <!-- end of menu -->
+
+       @Html.Partial("/Views/Shared/_title.cshtml")
+
+
+        <div id="onlineBookStore_content">
+
+            @Html.Partial("/Views/Shared/_centerLayout.cshtml")
+
+
+
+
+            <div id="onlineBookStore_content_right">
+
+                <div class="onlineBookStore_add_book">
+
+    <h1>Books Detail</h1>
+    @*<form method="post" action="/Admin/del_b">*@
+                    <center>
+                        <table  border="1" cellspacing=6 cellpadding=10 align="center">
+                            <tr>
+                                <th width="20">Id </th>
+                                <th>Name </th>
+                                <th>Quantity </th>
+                                <th>Catagory </th>
+                                <th>Price </th>
+                                <th>Preview </th>
+
+                                <th>Edit Record </th>
+                                <th>Delete Record </th>
+                            </tr>
+                            @foreach (var b in Model)
+                            {
+
+                                <tr>
+                                    <td>@b.Id </td>
+                                    <td>@b.Name </td>
+                                    <td>@b.Quantity </td>
+                                    <td>@b.Catagory </td>
+                                    <td>@b.Price </td>
+                                    <td><div id="imageDiv"> <img src="@Url.Content("~/image/image"+ b.Id+".jpg")" alt="image" /></div></td>
+
+                                    <td>@Html.ActionLink("Edit", "EditBook", new { id = b.Id })</td>
+                                    <td>@Html.ActionLink("Delete", "DeleteBook", new { id = b.Id })</td>
+
+
+
+
+                                </tr>
+                            }
+
+
+
+
+
+
+                        </table>
+                    </center>
+
+                    <div>
+                        <br/> <br/> <br/>
+                        <form action="/Admin/add" method="post">
+                            <input type="submit" value="Add a Book" />
+                        </form>
+                    </div>
+            @*@using (Html.BeginForm("Edit", "Book", FormMethod.Post))
+                {
+                    @Html.HiddenFor(m => m.Id)
+                    @Html.LabelFor(m => m.Name)
+                    @Html.EditorFor(m => m.Name)
+
+                    @Html.LabelFor(m => m.Price)
+                    @Html.EditorFor(m => m.Price)
+
+                     @Html.LabelFor(m => m.Quantity)
+                    @Html.EditorFor(m => m.Quantity)
+
+                    <input type="submit" value="Save" />
+                }*@
+
+
+
+
+
+
+
+            </div>
+            </div> <!-- end of content right -->
+
+            <div class="cleaner_with_height">&nbsp;</div>
+        </div> <!-- end of content -->
+
+        @Html.Partial("/Views/Shared/_footer.cshtml")
+
+
+
+
+    </div> <!-- end of container -->
+
+
+

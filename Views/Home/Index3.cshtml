@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = null;
+}
+@*@model website.Models.Books*@
+
+
+
+    <div id="onlineBookStore_container">
+        <div id="onlineBookStore_menu">
+            <ul>
+                <li><a href="~/Home/home">Home</a></li>
+                <li><a href="~/Home/index3">About us</a></li>
+                <li><a href="~/Client/shopping">Shopping</a></li>
+                <li><a href="~/Admin/login">Login</a></li>
+                <li><a href="~/Home/contact">Contact</a></li>
+                <li><a href="~/Client/SignUp">Sign Up </a></li>
+                <li><a href="~/Home/advance">Advanced Search </a></li>
+
+
+            </ul>
+            <form class="navbar-form" method="post" action="/Client/search">
+                <select name=" type" size="1">
+
+                    <option value="Publisher">Publisher</option>
+
+                    <option value="Name" selected>Title /Book Name</option>
+
+                    <option value="Author">Author /Writer</option>
+
+                    <option value="Price">Price</option>
+
+                    <option value="Catagory">Catagory</option>
+
+                </select>
+                <input type="search" value="" name="search" />
+                <input type="submit" value="search" />
+            </form>
+        </div> <!-- end of menu -->
+
+@Html.Partial("/Views/Shared/_title.cshtml")
+
+
+
+
+        <div id="onlineBookStore_content">
+
+            @Html.Partial("/Views/Shared/_centerLayout.cshtml")
+
+
+
+
+            <div id="onlineBookStore_content_right">
+                <h3> Welcome to Our Book Store </h3>
+
+                <h1 >
+
+                   Online Book Store allows its users to search and purchase books based on title, catagory, price
+                     and author. Now you can buy your desired books easily.
+                    Books of different catagories are available such as</h1>
+                    <ul>
+                        <li><h1>Islamic</h1></li>
+                        <li><h1>Historical</h1></li>
+                        <li><h1>Programming</h1></li>
+                        <li><h1>Funny</h1></li>
+                        <li><h1>Novels</h1></li>
+                        <li><h1>Mathematics</h1></li>
+                        <li><h1>Novels</h1></li>
+                        <li><h1>Thoeratical</h1></li>
+
+                        </ul>
+                    
+               <h1>
+                    Our main Objective is to provide you with ease and comfort.
+                    <br/> <br/>
+                    New books are added time to time.
+                    <br/>
+                    Keep visiting to find the books by Best Sellers and of Top ranking catagories and Publishers.
+
+                       <br />   <br />   <br />   <br />   <br />
+                </h1>
+
+
+
+
+
+            </div> <!-- end of content right -->
+
+            <div class="cleaner_with_height">&nbsp;</div>
+        </div> <!-- end of content -->
+
+        @Html.Partial("/Views/Shared/_footer.cshtml")
+
+
+
+
+    </div> <!-- end of container -->
+
+
+
+

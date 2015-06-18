@@ -1,0 +1,51 @@
+﻿<div id="onlineBookStore_content_left">
+    <div class="onlineBookStore_content_left_section">
+        <h1>Categories</h1>
+        @*<ul>
+                <li><a href="#">Islamic</a></li>
+                <li><a href="#">History</a></li>
+                <li><a href="#">Novels</a></li>
+                <li><a href="#">Cooking</a></li>
+                <li><a href="#">Theories</a></li>
+                <li><a href="#">Literature</a></li>
+                <li><a href="#">Funny</a></li>
+                <li><a href="#">Mathematics</a></li>
+                <li><a href="#">Fictions</a></li>
+            </ul>*@
+        <ul>
+            @foreach (var a in ViewBag.Catagory)
+            {
+                <li><a href="~/Home/show_c/?id=@a.Name">@a.Name</a> </li>
+
+
+
+
+            }
+        </ul>
+    </div>
+    <div class="onlineBookStore_content_left_section">
+        <h1>Best Authors</h1>
+        <ul>
+            @foreach (var a in ViewBag.Authors)
+            {
+                <li><a href="~/Home/show_a/?id=@a.Name">@a.Name</a></li>
+
+            }
+        </ul>
+
+    </div>
+    <div class="onlineBookStore_content_left_section">
+        <h1>Best Publishers</h1>
+        <ul>
+            @foreach (var a in ViewBag.Publisher)
+            {
+                <li><a href="~/Home/show_p/?id=@a.Name">@a.Name</a></li>
+
+            }
+        </ul>
+
+    </div>
+
+
+
+</div> <!-- end of content left -->

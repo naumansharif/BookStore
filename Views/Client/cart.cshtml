@@ -1,0 +1,115 @@
+﻿@using website.Models;
+
+@{
+    ViewBag.Title = "cart";
+}
+
+<div id="onlineBookStore_container">
+
+    <div id="onlineBookStore_menu">
+        <ul>
+            <li><a href="~/Home/home">Home</a></li>
+            <li><a href="~/Home/index3">About us</a></li>
+            <li><a href="~/Client/books">Books</a></li>
+            <li><a href="~/Client/shopping">Shopping</a></li>
+            <li><a href="~/Client/signout">Sign out</a></li>
+
+            <li><a href="~/Home/contact">Contact</a></li>
+            <li><a href="~/Client/advance">Advanced Search </a></li>
+
+        </ul>
+        <form class="navbar-form" method="post" action="/Client/search">
+            <select name=" type" size="1">
+
+                <option value="Publisher">Publisher</option>
+
+                <option value="Name" selected>Title /Book Name</option>
+
+                <option value="Author">Author /Writer</option>
+
+                <option value="Price">Price</option>
+
+                <option value="Catagory">Catagory</option>
+
+            </select>
+            <input type="search" value="" name="search" />
+            <input type="submit" value="search" />
+        </form>
+    </div> <!-- end of menu -->
+    @Html.Partial("/Views/Shared/_title.cshtml")
+
+
+    <div id="onlineBookStore_content">
+
+        @Html.Partial("/Views/Shared/_centerLayout.cshtml")
+
+
+
+
+        <div id="onlineBookStore_content_right">
+            <div id="best-sellers">
+                @*<h1>
+                    Net Price :
+                    @ViewData["P"] <br />
+                </h1>*@
+                <div>
+                    <form action="/Client/End" method="post">
+                        <input type="submit" value="End Shopping" />
+                    </form>
+                </div>
+                <br />
+                <div>
+                    <form action="/Client/books" method="post">
+                        <input type="submit" value="Back to Shopping" />
+                    </form>
+                </div>
+                <br />
+                <h3>Books in Cart</h3>
+
+                @*<ul> <li><a href="~/Client/books">Back to Shopping</a></li></ul>*@
+
+                
+
+
+                @foreach (var b in Model)
+                {
+                    <div class="onlineBookStore_product_box_1">
+
+                        <div class="product">
+                            @if (b.Quantity > 0)
+                            {
+                                <h2>
+                                    Name :
+                                    @b.Name
+                                </h2>
+                                <img src="@Url.Content("~/image/image"+b.Id+".jpg")" alt="image" /><br /><br />
+                                @Html.ActionLink("Remove from Cart", "R_Book", new { id = b.Id })
+                                    
+
+
+
+                            }
+
+                        </div>
+                    </div>
+                }
+
+
+
+            </div>
+
+            <!-- End Best-sellers -->
+
+            <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+
+        </div> <!-- end of content right -->
+
+        <div class="cleaner_with_height">&nbsp;</div>
+    </div> <!-- end of content -->
+    @Html.Partial("/Views//Shared/_footer.cshtml")
+
+
+
+
+</div> <!-- end of container -->
+

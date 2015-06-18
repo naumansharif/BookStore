@@ -1,0 +1,134 @@
+﻿@model website.Models.Book
+
+@{
+    ViewBag.Title = "Buy_Book";
+}
+
+
+    <div id="onlineBookStore_container">
+        <div id="onlineBookStore_menu">
+            <ul>
+                <li><a href="~/Home/home">Home</a></li>
+                <li><a href="~/Home/index3">About us</a></li>
+                <li><a href="~/Client/books">Books</a></li>
+                <li><a href="~/Client/shopping">Shopping</a></li>
+                <li><a href="~/Admin/login">Login</a></li>
+                <li><a href="~/Client/signout">Sign out</a></li>
+
+                <li><a href="~/Home/contact">Contact</a></li>
+                <li><a href="~/Client/advance">Advanced Search </a></li>
+
+            </ul>
+            <form class="navbar-form" method="post" action="/Client/search">
+                <select name=" type" size="1">
+
+                    <option value="Publisher">Publisher</option>
+
+                    <option value="Name" selected>Title /Book Name</option>
+
+                    <option value="Author">Author /Writer</option>
+
+                    <option value="Price">Price</option>
+
+                    <option value="Catagory">Catagory</option>
+
+                </select>
+                <input type="search" value="" name="search" />
+                <input type="submit" value="search" />
+            </form>
+        </div> <!-- end of menu -->
+
+        @Html.Partial("/Views/Shared/_title.cshtml")
+
+
+
+
+        <div id="onlineBookStore_content">
+
+            @Html.Partial("/Views/Shared/_centerLayout.cshtml")
+
+
+
+
+            <div id="onlineBookStore_content_right">
+
+                <div class="onlineBookStore_add_book">
+
+                    <h1>  Book Details</h1>
+                    @*<form method="post" action="/Admin/del_b">*@
+
+
+
+                    @*@foreach (var b in Model)
+                         {
+                             <table border="1">
+                                 <tr>
+                                     <td>@b.Id</td>
+                                     <td>@b.Name</td>
+                                     <td>@b.Quantity</td>
+                                     <td>@b.Catagory</td>
+                                     <td>@b.Price</td>
+                                     <td><a href="~/Admin/delete">Delete</a></td>
+                                 </tr>
+
+
+                             </table>
+
+                        }*@
+                    @using (Html.BeginForm("Buy", "Client", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(m => m.Id)
+
+                    <div id="imageDiv1"> <img src="@Url.Content("~/image/image"+ @Model.Id+".jpg")" alt="image" /></div> <br/><br/>
+                         <h1>
+                             Name :
+                             @Model.Name<br />
+                        </h1>
+                        <h1>
+                             Price :
+                             @Model.Price<br />
+                        </h1>
+                        <h1>
+                             Catagory :
+                             @Model.Catagory<br />
+                        </h1>
+                         <h1>
+                             Author :
+                             @Model.Author<br />
+                        </h1>
+                        <h1>
+                            Publisher :
+                            @Model.Publisher<br />
+                        </h1>
+   
+
+                        @*@Model.Name<br/>
+                        @Model.Price<br/>
+                        @Model.Catagory<br/>
+                        @Model.Author<br/>*@
+                        <input type="submit" value="Buy" />
+                    }
+
+
+
+
+
+
+
+                </div>
+            </div> <!-- end of content right -->
+
+            <div class="cleaner_with_height">&nbsp;</div>
+        </div> <!-- end of content -->
+
+        @Html.Partial("/Views//Shared/_footer.cshtml")
+
+
+
+
+    </div> <!-- end of container -->
+
+
+
+
+

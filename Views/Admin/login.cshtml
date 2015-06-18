@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "login";
+}
+
+@*@model website.Models.Books*@
+
+
+
+
+    <div id="onlineBookStore_container">
+        <div id="onlineBookStore_menu">
+            <ul>
+                <li><a href="~/Home/home">Home</a></li>
+                <li><a href="~/Home/index3">About us</a></li>
+                <li><a href="~/Client/books">Books</a></li>
+                <li><a href="~/Admin/login">Login</a></li>
+                <li><a href="~/Admin/signout">Sign out</a></li>
+                <li><a href="~/Admin/advance">Advanced Search </a></li>
+
+            </ul>
+            <form class="navbar-form" method="post" action="/Client/search">
+                <select name=" type" size="1">
+
+                    <option value="Publisher">Publisher</option>
+
+                    <option value="Name" selected>Title /Book Name</option>
+
+                    <option value="Author">Author /Writer</option>
+
+                    <option value="Price">Price</option>
+
+                    <option value="Catagory">Catagory</option>
+
+                </select>
+                <input type="search" value="" name="search" />
+                <input type="submit" value="search" />
+            </form>
+        </div> <!-- end of menu -->
+
+       @Html.Partial("/Views/Shared/_title.cshtml")
+
+
+        <div id="onlineBookStore_content">
+
+            @Html.Partial("/Views/Shared/_centerLayout.cshtml")
+
+
+
+
+            <div id="onlineBookStore_content_right">
+
+                <h1> Admin Login...</h1>
+                <h2> Login here</h2>
+                <section class="container">
+                    <div class="login">
+                        <h1>Login </h1>
+                        <form method="post" action="/Admin/find">
+                            <p> @ViewBag.error</p>
+
+                            <p><input type="text" name="Name" value="" placeholder="Username or Email" /></p>
+                            <p><input type="password" name="Password" value="" placeholder="Password" /></p>
+                            <p class="remember_me">
+                                <label>
+                                    <input type="checkbox" name="remember_me" id="remember_me" />
+                                    Remember me
+                                </label>
+                            </p>
+                            <p class="submit"><input type="submit" name="commit" value="Login" /></p>
+                        </form>
+                    </div>
+
+                    <div class="login-help">
+                        <p>Forgot your password?</p>
+                    </div>
+                </section>
+
+
+
+
+            </div> <!-- end of content right -->
+
+            <div class="cleaner_with_height">&nbsp;</div>
+        </div> <!-- end of content -->
+
+        @Html.Partial("/Views/Shared/_footer.cshtml")
+
+
+
+
+    </div> <!-- end of container -->
+
+
+
+

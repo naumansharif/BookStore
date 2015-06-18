@@ -1,0 +1,103 @@
+﻿@using website.Models;
+
+@{
+    ViewBag.Title = "show";
+}
+
+<div id="onlineBookStore_container">
+
+    <div id="onlineBookStore_menu">
+        <ul>
+            <li><a href="~/Home/home">Home</a></li>
+            <li><a href="~/Home/index3">About us</a></li>
+            <li><a href="~/Client/shopping">Shopping</a></li>
+            <li><a href="~/Admin/login">Login</a></li>
+            <li><a href="~/Home/contact">Contact</a></li>
+            <li><a href="~/Admin/advance">Advanced Search </a></li>
+
+
+        </ul>
+        <form class="navbar-form" method="post" action="/Client/search">
+            <select name=" type" size="1">
+
+                <option value="Publisher">Publisher</option>
+
+                <option value="Name" selected>Title /Book Name</option>
+
+                <option value="Author">Author /Writer</option>
+
+                <option value="Price">Price</option>
+
+                <option value="Catagory">Catagory</option>
+
+            </select>
+            <input type="search" value="" name="search" />
+            <input type="submit" value="search" />
+        </form>
+    </div> <!-- end of menu -->
+    @Html.Partial("/Views/Shared/_title.cshtml")
+
+
+    <div id="onlineBookStore_content">
+
+        @Html.Partial("/Views/Shared/_centerLayout.cshtml")
+
+
+
+
+        <div id="onlineBookStore_content_right">
+            <div id="best-sellers">
+               
+                <br /><br />
+                <h3> Books Available </h3>
+
+                @foreach (var b in Model)
+                {
+                    <div class="onlineBookStore_product_box_1">
+
+                        <div class="product">
+                            @if (b.Quantity > 0)
+                            {
+                                <p>
+                                    Name :
+                                    @b.Name
+                                </p>
+    <p>
+        Price :
+        @b.Price
+    </p>
+    <p>
+        Catagory :
+        @b.Catagory
+    </p>
+    <p>
+        Publisher :
+        @b.Publisher
+    </p> <br/>
+                                <img src="@Url.Content("~/image/image"+b.Id+".jpg")" alt="image" /><br /><br />
+
+                            }
+
+                        </div>
+                    </div>
+                }
+
+
+
+            </div>
+
+            <!-- End Best-sellers -->
+
+            <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+
+        </div> <!-- end of content right -->
+
+        <div class="cleaner_with_height">&nbsp;</div>
+    </div> <!-- end of content -->
+    @Html.Partial("/Views//Shared/_footer.cshtml")
+
+
+
+
+</div> <!-- end of container -->
+
